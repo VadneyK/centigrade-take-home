@@ -1,7 +1,5 @@
 
-I'll update the README.md with comprehensive setup instructions:
 
-```markdown:README.md
 # Store API Microservice
 
 A FastAPI-based microservice for managing a store's customers, products, and orders with JWT authentication.
@@ -9,7 +7,6 @@ A FastAPI-based microservice for managing a store's customers, products, and ord
 ## Project Structure
 
 ```
-
 centigrade-take-home/
 ├── app/
 │   ├── __init__.py
@@ -28,6 +25,7 @@ centigrade-take-home/
 ├── requirements.txt
 ├── alembic.ini
 └── README.md
+```
 
 ## Prerequisites
 
@@ -308,7 +306,3 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 - The default SECRET_KEY in auth.py should be changed in production
 - Database credentials should be stored in environment variables
 - CORS settings should be configured based on your requirements
-
-```
-
-```
