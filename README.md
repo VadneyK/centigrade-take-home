@@ -1,5 +1,4 @@
 
-
 # Store API Microservice
 
 A FastAPI-based microservice for managing a store's customers, products, and orders with JWT authentication.
@@ -7,6 +6,7 @@ A FastAPI-based microservice for managing a store's customers, products, and ord
 ## Project Structure
 
 ```
+
 centigrade-take-home/
 ├── app/
 │   ├── __init__.py
@@ -29,16 +29,31 @@ centigrade-take-home/
 
 ## Prerequisites
 
-- Python 3.8+ <3.13
+- Python 3.8+ <3.13 (Pydantic has issues with 3.13)
 - PostgreSQL
 - pip (Python package installer)
+
+## Environment Setup
+
+1. Copy the example environment file:
+
+```
+bash
+cp .env.example .env
+```
+
+2. Update the values in `.env` with your configuration:
+
+- `DATABASE_URL`: Your PostgreSQL connection string
+- `SECRET_KEY`: A secure secret key for JWT token generation
+- `ACCESS_TOKEN_EXPIRE_MINUTES`: Token expiration time in minutes
 
 ## Setup Instructions
 
 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/store-api.git
+git clone https://github.com/VadneyK/centigrade-take-home.git
 cd centigrade-take-home
 ```
 
@@ -46,11 +61,11 @@ cd centigrade-take-home
 
 ```bash
 # On Windows
-python -m venv venv
+python3.12 -m venv venv
 venv\Scripts\activate
 
 # On macOS/Linux
-python -m venv venv
+python3.12 -m venv venv
 source venv/bin/activate
 ```
 
@@ -80,9 +95,7 @@ createdb store_db
 SQLALCHEMY_DATABASE_URL = "postgresql://postgres:postgres@localhost/store_db"
 ```
 
-
-
-### Connect to PostgreSQL
+## Construct the URL:
 
 Run the following command to connect to PostgreSQL:
 
@@ -245,7 +258,7 @@ curl -X 'GET' \
 - Orders can only be created for the authenticated customer
 - Replace `YOUR_ACCESS_TOKEN` with the token received from the login endpoint
 
-## Database UML Schema
+## Database UML Scheme
 
 ```mermaid
 classDiagram
