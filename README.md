@@ -172,7 +172,7 @@ Once the application is running, you can access:
 
 ## Testing the API
 
-1. Create a customer:
+1. Create a customer (public endpoint):
 
 ```bash
 curl -X 'POST' \
@@ -185,7 +185,7 @@ curl -X 'POST' \
 }'
 ```
 
-2. Get authentication token:
+2. Get authentication token (public endpoint):
 
 ```bash
 curl -X 'POST' \
@@ -194,11 +194,21 @@ curl -X 'POST' \
   -d 'username=test@example.com&password=password123'
 ```
 
-3. Create a product:
+The response will include your access token:
+
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1...",
+  "token_type": "bearer"
+}
+```
+
+3. Create a product (protected endpoint):
 
 ```bash
 curl -X 'POST' \
   'http://localhost:8000/products/' \
+  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
   -H 'Content-Type: application/json' \
   -d '{
   "name": "Test Product",
@@ -207,11 +217,12 @@ curl -X 'POST' \
 }'
 ```
 
-4. Create an order:
+4. Create an order (protected endpoint):
 
 ```bash
 curl -X 'POST' \
   'http://localhost:8000/orders/' \
+  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
   -H 'Content-Type: application/json' \
   -d '{
   "customer_id": 1,
@@ -220,7 +231,23 @@ curl -X 'POST' \
 }'
 ```
 
-## Database Schema
+5. Get customer details (protected endpoint):
+
+```bash
+curl -X 'GET' \
+  'http://localhost:8000/customers/1' \
+  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN'
+```
+
+## Authentication Notes
+
+- Only customer creation (`POST /customers/`) and login (`POST /token`) endpoints are public
+- All other endpoints require a valid JWT token in the Authorization header
+- Tokens expire after 30 minutes
+- Orders can only be created for the authenticated customer
+- Replace `YOUR_ACCESS_TOKEN` with the token received from the login endpoint
+
+## Database UML Schema
 
 ```mermaid
 classDiagram
