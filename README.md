@@ -82,7 +82,7 @@ SQLALCHEMY_DATABASE_URL = "postgresql://postgres:postgres@localhost/store_db"
 
 
 
-# Connect to PostgreSQL
+### Connect to PostgreSQL
 
 Run the following command to connect to PostgreSQL:
 
@@ -90,7 +90,7 @@ Run the following command to connect to PostgreSQL:
 psql postgres
 ```
 
-## Then in `psql`:
+### Then in `psql`:
 
 To try to connect to the `store_db`, run:
 
@@ -112,7 +112,7 @@ You are connected to database "store_db" as user "yourusername" via socket in "/
 
 Use this information to construct your URL.
 
-7. Initialize and Run Migrations
+6. Initialize and Run Migrations
 
 ```bash
 # Initialize alembic
